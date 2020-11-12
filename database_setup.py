@@ -7,9 +7,9 @@ connection = mc.connect (host = "localhost",
                          use_unicode=True,
                          )
 cursor = connection.cursor()
-cursor.execute("drop database if exists library")
+cursor.execute("drop database if exists LMS")
 cursor.execute("Create database library")
-cursor.execute("use library")
+cursor.execute("use LMS")
 cursor.execute("drop table if exists BOOK")
 cursor.execute("""
 create table BOOK(
