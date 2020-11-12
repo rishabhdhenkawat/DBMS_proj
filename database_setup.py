@@ -95,7 +95,7 @@ create table FINES(
 row = cursor.fetchone()
 
 books=[]
-with open('books.csv', encoding = 'utf8') as f:
+with open('books.csv',  encoding='cp1252') as f:
     lines = f.readlines()
     for line in lines[1:]:
         books.append(line.strip().split('\t'))
@@ -121,7 +121,7 @@ for book in books[:]:
 
 # Insert borrower.csv
 borrowers=[]
-with open('borrowers.csv') as f:
+with open('borrowers.csv', encoding='cp1252') as f:
     lines = f.readlines()
     for line in lines[1:]:
         borrowers.append(line.strip().split(','))
