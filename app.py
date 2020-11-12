@@ -11,7 +11,7 @@ from flask import *
 
 app = Flask(__name__,
             static_folder="./Static_CSS_JS",
-            template_folder="./HTML templates")
+            template_folder="./HTML_templates")
 
 @app.route("/updatefines")
 def update_fines():
@@ -190,7 +190,7 @@ def search_books(search=False):
          new_search_words = list(isbns_search)
 
     for i in new_search_words:
-        statement = statement + " select b.isbn from book b join book_authors ba on ba.isbn=b.isbn join authors a on a.author_id=ba.author_id where b.isbn like '%{0}%' or a.name like '%{0}%' or b.title like '%{0}%' UNION".format(i)
+        statement = statement + " select b.isbn from BOOK b join BOOK_AUTHORS ba on ba.isbn=b.isbn join AUTHORS a on a.author_id=ba.author_id where b.isbn like '%{0}%' or a.name like '%{0}%' or b.title like '%{0}%' UNION".format(i)
 
    
     statement = statement.rsplit(' ', 1)[0]
@@ -438,4 +438,4 @@ def addborrower():
                            msg="Add successful!")
     
 if __name__ ==  "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', port='6969',debug=True)
