@@ -17,12 +17,12 @@ app = Flask(__name__,
 def update_fines():
     connection = mc.connect (host = "localhost",
                              user = "root",
-                             passwd = '2wsx@WSX',
+                             passwd = 'teledoc123',
                              charset='utf8',
                              use_unicode=True,
     )
     cursor = connection.cursor()
-    cursor.execute("use library")
+    cursor.execute("use LMS")
     cursor.execute("DELETE from FINES where Paid=0")
     cursor.execute("select * from BOOK_LOANS;")
     loans = cursor.fetchall()
@@ -54,12 +54,12 @@ def update_fines():
 def book_details(isbns):
     connection = mc.connect (host = "localhost",
                              user = "root",
-                             passwd = '2wsx@WSX',
+                             passwd = 'teledoc123',
                              charset='utf8',
                              use_unicode=True,
     )
     cursor = connection.cursor()
-    cursor.execute("use library")
+    cursor.execute("use LMS")
     books=[]
     for isbn in isbns:
         cursor.execute("select Title from BOOK where Isbn='{0}'".format(isbn))
@@ -95,12 +95,12 @@ def book_details(isbns):
 def books_borrowed(cardid):
     connection = mc.connect (host = "localhost",
                              user = "root",
-                             passwd = '2wsx@WSX',
+                             passwd = 'teledoc123',
                              charset='utf8',
                              use_unicode=True,
     )
     cursor = connection.cursor()
-    cursor.execute("use library")
+    cursor.execute("use LMS")
     cursor.execute("select * from BOOK_LOANS where Card_id='{0}' and date_in is null".format(cardid))
     isbns = [x[0] for x in cursor.fetchall()]
     connection.close()
@@ -111,12 +111,12 @@ def books_borrowed(cardid):
 def valid_cardid(cardid):
     connection = mc.connect (host = "localhost",
                              user = "root",
-                             passwd = '2wsx@WSX',
+                             passwd = 'teledoc123',
                              charset='utf8',
                              use_unicode=True,
     )
     cursor = connection.cursor()
-    cursor.execute("use library")
+    cursor.execute("use LMS")
     cursor.execute("select * from BORROWER where Card_id='{0}'".format(cardid))
     ids = cursor.fetchall()
     count = len(ids)
@@ -129,12 +129,12 @@ def valid_cardid(cardid):
 def search_books(search=False):
     connection = mc.connect (host = "localhost",
                              user = "root",
-                             passwd = '2wsx@WSX',
+                             passwd = 'teledoc123',
                              charset='utf8',
                              use_unicode=True,
     )
     cursor = connection.cursor()
-    cursor.execute("use library")
+    cursor.execute("use LMS")
     new_search = search.replace("'","")
     lower_search = new_search.lower()
     words = lower_search.split()
@@ -208,12 +208,12 @@ def search_books(search=False):
 def search_booksc(isbn=False,cardid=False,name=False):
     connection = mc.connect (host = "localhost",
                              user = "root",
-                             passwd = '2wsx@WSX',
+                             passwd = 'teledoc123',
                              charset='utf8',
                              use_unicode=True,
     )
     cursor = connection.cursor()
-    cursor.execute("use library")
+    cursor.execute("use LMS")
     query=""
     books=[]
     if not (isbn or cardid or name) :
@@ -235,12 +235,12 @@ def search_booksc(isbn=False,cardid=False,name=False):
 def checkout_book(isbn, cardid):
     connection = mc.connect (host = "localhost",
                              user = "root",
-                             passwd = '2wsx@WSX',
+                             passwd = 'teledoc123',
                              charset='utf8',
                              use_unicode=True,
     )
     cursor = connection.cursor()
-    cursor.execute("use library")
+    cursor.execute("use LMS")
     dateout = dt.now()
     datedue = dateout+td(days=14)
     dateout = dateout.strftime("%Y%m%d")
@@ -274,12 +274,12 @@ def checkin():
 
     connection = mc.connect (host = "localhost",
                              user = "root",
-                             passwd = '2wsx@WSX',
+                             passwd = 'teledoc123',
                              charset='utf8',
                              use_unicode=True,
     )
     cursor = connection.cursor()
-    cursor.execute("use library")
+    cursor.execute("use LMS")
     cursor.execute("update BOOK_LOANS SET Date_in='{0}' where Isbn='{1}' and Date_in is NULL".format(datein,isbn))
     connection.commit()
     connection.close()
@@ -293,12 +293,12 @@ def fetchfines():
     update_fines()
     connection = mc.connect (host = "localhost",
                              user = "root",
-                             passwd = '2wsx@WSX',
+                             passwd = 'teledoc123',
                              charset='utf8',
                              use_unicode=True,
     )
     cursor = connection.cursor()
-    cursor.execute("use library")
+    cursor.execute("use LMS")
     cursor.execute("select B.Card_id, sum(F.Fine_amt) from BOOK_LOANS as B join (select Loan_id,Fine_amt from FINES where Paid=0) as F where F.Loan_id=B.Loan_id  group by B.Card_id;")
     fines = [(x,str(y)+" USD") for x,y in cursor.fetchall()]
     connection.commit()
@@ -316,12 +316,12 @@ def payfine():
     cid = form.get('cid')
     connection = mc.connect (host = "localhost",
                              user = "root",
-                             passwd = '2wsx@WSX',
+                             passwd = 'teledoc123',
                              charset='utf8',
                              use_unicode=True,
     )
     cursor = connection.cursor()
-    cursor.execute("use library")
+    cursor.execute("use LMS")
     cursor.execute("select Loan_id from BOOK_LOANS where Card_id='{}' and Date_in is not NULL;".format(cid))
     loans = [x[0] for x in cursor.fetchall()]
 
@@ -389,12 +389,12 @@ def checkoutstatus():
 def isnewssn(ssn):
     connection = mc.connect (host = "localhost",
                              user = "root",
-                             passwd = '2wsx@WSX',
+                             passwd = 'teledoc123',
                              charset='utf8',
                              use_unicode=True,
     )
     cursor = connection.cursor()
-    cursor.execute("use library")
+    cursor.execute("use LMS")
     cursor.execute("select * from BORROWER where ssn='{0}'".format(ssn))
     ids = cursor.fetchall()
     count = len(ids)
@@ -425,12 +425,12 @@ def addborrower():
     
     connection = mc.connect (host = "localhost",
                              user = "root",
-                             passwd = '2wsx@WSX',
+                             passwd = 'teledoc123',
                              charset='utf8',
                              use_unicode=True,
     )
     cursor = connection.cursor()
-    cursor.execute("use library")
+    cursor.execute("use LMS")
     cursor.execute("""INSERT INTO BORROWER (Ssn,Bname,Address,Phone) values ('{}','{}','{}','{}')""".format(ssn,name,address,phone))
     connection.commit()
     connection.close()
