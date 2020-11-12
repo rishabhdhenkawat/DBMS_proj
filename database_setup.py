@@ -2,7 +2,7 @@ import mysql.connector as mc
 
 connection = mc.connect (host = "localhost",
                          user = "root",
-                         passwd = '2wsx@WSX',
+                         passwd = 'teledoc123',
                          charset='utf8',
                          use_unicode=True,
                          )
