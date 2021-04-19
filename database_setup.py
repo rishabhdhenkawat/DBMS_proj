@@ -1,5 +1,6 @@
 import mysql.connector as mc
 
+
 connection = mc.connect (host = "localhost",
                          user = "root",
                          passwd = 'teledoc123',
