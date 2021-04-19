@@ -9,6 +9,7 @@ from flask import *
 
 
 
+
 app = Flask(__name__,
             static_folder="./Static_CSS_JS",
             template_folder="./HTML_templates")
