@@ -11,7 +11,7 @@ from flask import *
 
 app = Flask(__name__,
             static_folder="./Static_CSS_JS",
-            template_folder="./HTML_templates")
+            template_folder="./HTML templates")
 
 @app.route("/updatefines")
 def update_fines():
@@ -28,11 +28,11 @@ def update_fines():
     loans = cursor.fetchall()
     for loan in loans:
         lid,isbn,cid,dateout,datedue,datein = loan
-        datedue = dt.strptime(str(datedue), "%Y%m%d")
+        datedue = dt.strptime(str(datedue), "%Y-%m-%d %H:%M:%S")
         if datein == None:
             datein = dt.now()
         else:
-            datein = dt.strptime(str(datein),'%Y%m%d')
+            datein = dt.strptime(str(datein),'%Y-%m-%d %H:%M:%S')
 
         diff = datein - datedue
         diff = diff.days

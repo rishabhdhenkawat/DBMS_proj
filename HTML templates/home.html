@@ -34,10 +34,10 @@
 								<a href="#checkin" aria-controls="profile" role="tab" data-toggle="tab">Check In</a>
 							</li>
 							<li>
-								<a href="#addborrower" aria-controls="profile" role="tab" data-toggle="tab">Add Borrower</a>
+								<a href="#addborrower" aria-controls="profile" role="tab" data-toggle="tab">Add Customer</a>
 							</li>
 							<li>
-								<a href="#mngfines" aria-controls="profile" role="tab" data-toggle="tab">Manage Fines</a>
+								<a href="#mngfines" aria-controls="profile" role="tab" data-toggle="tab">Manage Cost</a>
 							</li>
 						</ul>
 					</div>
@@ -52,7 +52,7 @@
 				<div role="tabpanel" class="tab-pane active" id="booksearch">
 					<form action="{{ url_for('results') }}" method="post">
 						<div class="form-group row" >
-							<h1>Book Search</h1>
+							<h1>Book Store Management</h1>
 								<div class="col-10">
 									<input class="form-control" name="search" type="search" placeholder="ISBN10 or author name or a related word" id="search" aria-describedby="basic-addon1" required>
 								</div>
@@ -131,7 +131,7 @@
 						</div>
 
 						<center>
-							<button type="submit" class="btn btn-primary btn-lg">Add Borrower</button>
+							<button type="submit" class="btn btn-primary btn-lg">Add Customer</button>
 						</center>
 					</form>
 				</div>
@@ -139,8 +139,8 @@
 
 				<div role="tabpanel" class="tab-pane" id="mngfines">
 					<center>
-						<a href="/fetchfines" class="btn btn-primary btn-lg">fines</a>
-						<a href="/updatefines" class="btn btn-primary btn-lg">Update fines</a>
+						<a href="/fetchfines" class="btn btn-primary btn-lg">Manage Payments</a>
+						<a href="/updatefines" class="btn btn-primary btn-lg">Update Payments</a>
 					</center>
 				</div>
 

@@ -43,7 +43,7 @@
     <tr>
       <th>#</th>
       <th>Card Id</th>
-      <th>Fine</th>
+      <th>Amount Due</th>
       <th>Paying Now?</th>
     </tr>
   </thead>
@@ -55,7 +55,7 @@
       <td>{{ fine[1] }}</td>
 
       <td> {% if true %}
-	           <button onclick='chectmod("{{ fine[0] }}")' type="button" class="btn btn-primary" >Update Fine</button>
+	           <button onclick='chectmod("{{ fine[0] }}")' type="button" class="btn btn-primary" >Update Payment</button>
 	        {% else %}
 	            Not yet checked in
           {% endif %}
