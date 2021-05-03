@@ -1,16 +1,16 @@
 # Database-Design
 
-Library Management System
+Book Store Management System
 
 A Web Application for librarians to manage the data, which includes features.
 - Search option
-- Check-in 
-- Check-out 
+- Check-in of stock
+- Check-out stock
 - Option for making new entries
-- Manage fines
-- Adding a borrower account
+- Manage Payment
+- Adding a customer account
 
-The project involves the creation of database host application that interfaces with a backend SQL database implementing a Library Management System. Users of this system are understood to be librarians.
+The project involves the creation of database host application that interfaces with a backend SQL database implementing a Book Store Management System. Users of this system are understood to be shopkeepers.
 All application work is done in python.mysql
 
 python are to be installed in the system along with 3 python's APIs install using 'pip install "API name"'-
